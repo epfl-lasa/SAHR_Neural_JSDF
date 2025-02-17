@@ -156,6 +156,20 @@ class PRM:
         # a = 1
         return (dis_reduced_min > self.safety_margin).cpu().numpy()
 
+    def collision_check2(self, q, x):
+        xn = x.shape[0]
+        qn = q.shape[0]
+        q = torch.from_numpy(q).type(self.dtype).to(self.device)
+        x = torch.from_numpy(x).type(self.dtype).to(self.device)
+
+        q, x = q.repeat_interleave(xn, 0), x.repeat(qn, 1)
+
+        qx = torch.hstack((q, x))
+        tmp = self.jsdf.calculate_signed_distance_raw_input(qx)
+        tmp = tmp.reshape(qn, xn, self.link_nums)
+        dis, _ = torch.min(tmp, 1)
+        return dis.cpu().numpy()
+
 
 class collision_check:
     def __init__(self, x_obj, g=None, use_cuda=False, right_hand=True, visualize=[2]):
