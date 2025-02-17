@@ -355,9 +355,9 @@ class NN_hand_obj:
             if i in [2, 3]:
                 if path_prefix_suffix is None:
                     if right:
-                        T12 = np.loadtxt("NN_model/models/T12")
+                        T12 = np.loadtxt("../NN_model/models/T12")
                     else:
-                        T12 = np.loadtxt("NN_model/models/T12_left")
+                        T12 = np.loadtxt("../NN_model/models/T12_left")
                 else:
                     if right:
                         T12 = np.loadtxt(path_prefix_suffix[0][:-7] + "T12")
@@ -374,7 +374,7 @@ class NN_hand_obj:
                 # this matrix will transfer the points in middle/ring fingers to the index finger.
             else:  # [0, 1, 4]
                 if path_prefix_suffix is None:
-                    path_check_point = 'NN_model/models/single_' + str(i) + '01.pt'
+                    path_check_point = '../NN_model/models/single_' + str(i) + '01.pt'
                 else:
                     assert len(path_prefix_suffix) == 2
                     path_check_point = path_prefix_suffix[0] + str(i) + path_prefix_suffix[1]

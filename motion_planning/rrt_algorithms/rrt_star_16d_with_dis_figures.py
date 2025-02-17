@@ -16,7 +16,7 @@ from motion_planning.NN_model.nn_model_eval import NN_hand_obj
 g = [0, 1, 2, 3, 4]
 
 use_cuda = False
-nn = NN_hand_obj(g=g, path_prefix_suffix=['../NN_model/models/single_', '01.pt'], use_cuda=use_cuda)
+nn = NN_hand_obj(g=g,  use_cuda=use_cuda)
 x_obj = np.array([[0.08, 0, 0.187], [0.08, -0.06, 0.187], [0.08, 0.06, 0.187]])
 # x_obj += np.array([1.8e-2 * np.sin(step / 20), 0, 0])
 x_obj_gpu = torch.Tensor(x_obj).to('cuda:0') if use_cuda else torch.Tensor(x_obj)

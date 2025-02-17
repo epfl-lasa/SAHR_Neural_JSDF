@@ -224,13 +224,13 @@ class collision_check:
     def __init__(self, x_obj, g=None, use_cuda=False, right_hand=True, visualize=[2]):
         if g is None:
             g = [0, 1, 2, 3, 4]
-        self.nn = NN_hand_obj(g=g, path_prefix_suffix=['/home/xiao/research/lasa/iiwa_allegro_sim/motion_planning/NN_model/models/single_', '01.pt'], use_cuda=use_cuda,
+        self.nn = NN_hand_obj(g=g, path_prefix_suffix=['../NN_model/models/single_', '01.pt'], use_cuda=use_cuda,
                               right=right_hand)
         if right_hand:
-            self.nn_SCA = NN_SCA_pro(path_check_point='/home/xiao/research/lasa/iiwa_allegro_sim/motion_planning/NN_model/models/model_new_01_N5.pt', use_cuda=use_cuda,
+            self.nn_SCA = NN_SCA_pro(path_check_point='../NN_model/models/model_new_01_N5.pt', use_cuda=use_cuda,
                                      right_hand=right_hand)
         else:
-            self.nn_SCA = NN_SCA_pro(path_check_point='/home/xiao/research/lasa/iiwa_allegro_sim/motion_planning/NN_model/models/model_new_01_N5_left.pt', use_cuda=use_cuda,
+            self.nn_SCA = NN_SCA_pro(path_check_point='../NN_model/models/model_new_01_N5_left.pt', use_cuda=use_cuda,
                                      right_hand=right_hand)
         self.use_cuda = use_cuda
         self.g = g
